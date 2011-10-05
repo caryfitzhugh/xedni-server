@@ -1,0 +1,47 @@
+GIT
+  remote: https://github.com/eventmachine/evma_httpserver.git
+  revision: a733b1c149d5225bedf00530f137f68975cdd140
+  tag: v0.2.0
+  specs:
+    eventmachine_httpserver (0.2.0)
+
+GIT
+  remote: https://github.com/tmm1/http_parser.rb.git
+  revision: 96349a55d8fa2366454836ef832eab9afac49dc0
+  tag: v0.5.3
+  specs:
+    http_parser.rb (0.5.3)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    active_support (3.0.0)
+      activesupport (= 3.0.0)
+    activesupport (3.0.0)
+    archive-tar-minitar (0.5.2)
+    columnize (0.3.4)
+    eventmachine (0.12.10)
+    i18n (0.6.0)
+    linecache19 (0.5.12)
+      ruby_core_source (>= 0.1.4)
+    ruby-debug-base19 (0.11.25)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby_core_source (>= 0.1.4)
+    ruby-debug19 (0.11.6)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby-debug-base19 (>= 0.11.19)
+    ruby_core_source (0.1.5)
+      archive-tar-minitar (>= 0.5.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  active_support
+  eventmachine
+  eventmachine_httpserver!
+  http_parser.rb!
+  i18n
+  ruby-debug19
