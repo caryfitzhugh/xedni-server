@@ -1,9 +1,9 @@
 require "rubygems"
 require "bundler/setup"
+Bundler.require(:default)
 require 'pp'
 require 'ruby-debug'
 
-Bundler.require(:default)
 require 'active_support/all'
 require 'evma_httpserver'
 
@@ -20,9 +20,10 @@ module XedniServer
   # Here is where we route the actions
   module Router
     ROUTES = {
-      /^\/$/ => :index,
-      /^\/foo$/ => { :get=>:got_foo },
-      /^\/bar$/ => { :post=>:got_bar }
+      /^\/$/ => {:get=>:index, :post=>:index, :delete=>:index, :put => :index },
+      /^\/create$/ => :create,
+      /^\/update$/ => :update,
+      /^\/read$/   => :read
     }
 
     @routes = {}
@@ -57,6 +58,84 @@ module XedniServer
       resp.content_type 'text/html'
       resp.content = XedniServer::Views.index
       resp.send_response
+    end
+    def self.query(resp)
+      # TODO -- If flagged for syncronous - do it now.
+      #    otherwise defer
+      EventMachine.defer(proc {
+        puts "Calling Xedni::Query..."
+        sleep 2
+        puts "Called Xedni::Query"
+      },
+        proc {|result|
+          resp.status = 123
+          resp.send_response
+        }
+      )
+    end
+    def self.read(resp)
+      # TODO -- If flagged for syncronous - do it now.
+      #    otherwise defer
+      EventMachine.defer(proc {
+        puts "*"*1000
+        puts "Calling Xedni::Read..."
+        sleep 1
+        puts "Called Xedni::Read"
+      },
+        proc {|result|
+          resp.status=123
+          resp.send_response
+        }
+      )
+    end
+    def self.create(resp)
+      resp.status = 123
+      resp.send_response
+      puts "Send response"
+
+      # TODO -- If flagged for syncronous - do it now.
+      #    otherwise defer
+      EventMachine.defer(proc {
+        puts "Calling Xedni::Create..."
+        sleep 1
+        puts "Called Xedni::Create"
+      },
+        proc {|result|
+        }
+      )
+    end
+
+    def self.update(resp)
+      resp.status = 123
+      resp.send_response
+      puts "Send response"
+
+      # TODO -- If flagged for syncronous - do it now.
+      #    otherwise defer
+      EventMachine.defer(proc {
+        puts "Calling Xedni::Update..."
+        sleep 1
+        puts "Called Xedni::Update"
+      },
+        proc {|result|
+        }
+      )
+    end
+    def self.destroy
+      resp.status = 123
+      resp.send_response
+      puts "Send response"
+
+      # TODO -- If flagged for syncronous - do it now.
+      #    otherwise defer
+      EventMachine.defer(proc {
+        puts "Calling Xedni::Destroy..."
+        sleep 1
+        puts "Called Xedni::Destroy"
+      },
+        proc {|result|
+        }
+      )
     end
   end
 
@@ -94,10 +173,9 @@ module XedniServer
     end
   end
 end
-
 EventMachine::run do
   host = '0.0.0.0'
-  port = 8080
+  port = 11456
   EventMachine::start_server host, port, XedniServer::App
   puts "Started Xedni on #{host}:#{port}"
 end

@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/caryfitzhugh/xedni.git
+  revision: 77fde5ee5a5c3bccd1bd943365b5c23dc697d0bd
+  tag: HEAD
+  specs:
+    xedni (1.0.2)
+
+GIT
   remote: https://github.com/eventmachine/evma_httpserver.git
   revision: a733b1c149d5225bedf00530f137f68975cdd140
   tag: v0.2.0
@@ -25,6 +32,7 @@ GEM
     i18n (0.6.0)
     linecache19 (0.5.12)
       ruby_core_source (>= 0.1.4)
+    mime-types (1.16)
     minitest (2.6.1)
     ruby-debug-base19 (0.11.25)
       columnize (>= 0.3.1)
@@ -36,6 +44,9 @@ GEM
       ruby-debug-base19 (>= 0.11.19)
     ruby_core_source (0.1.5)
       archive-tar-minitar (>= 0.5.2)
+    typhoeus (0.2.4)
+      mime-types
+      mime-types
 
 PLATFORMS
   ruby
@@ -49,3 +60,5 @@ DEPENDENCIES
   i18n
   minitest
   ruby-debug19
+  typhoeus
+  xedni!

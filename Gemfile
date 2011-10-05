@@ -7,3 +7,5 @@ gem 'active_support'
 gem 'eventmachine_httpserver', :git=>'https://github.com/eventmachine/evma_httpserver.git', :tag=>'v0.2.0'
 gem "minitest"
 gem "haml"
+gem "typhoeus"
+gem "xedni" , :git=>"git://github.com/caryfitzhugh/xedni.git", :tag=>"HEAD"
